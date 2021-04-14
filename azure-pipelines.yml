@@ -21,6 +21,7 @@ variables:
   CMA_ACCOUNT: customer1
   CMA_USE_HTTPS: false
   CMA_USERNAME: appd
+  CMA_PASSWORD: appd
   CMA_CONFIGURE_BT: false
   CMA_INCLUDE_SIM: false
   CMA_BT_ONLY: false
@@ -59,8 +60,11 @@ steps:
     #cp  ../branding/background.png branding/background.png
     #cp  ../branding/logo.png branding/logo.png
 
-     echo CMA_BT_ONLY = $CMA_BT_ONLY
-     echo CMA_CONFIGURE_BT = $CMA_CONFIGURE_BT
+    echo CMA_USERNAME = $CMA_USERNAME
+    echo CMA_PASSWORD = $CMA_PASSWORD
+
+    echo CMA_BT_ONLY = $CMA_BT_ONLY
+    echo CMA_CONFIGURE_BT = $CMA_CONFIGURE_BT
 
     if [ "$CMA_BT_ONLY" = true ] || [ "$CMA_CONFIGURE_BT" = true ]; then
       echo "Copying business transaction rules..."
