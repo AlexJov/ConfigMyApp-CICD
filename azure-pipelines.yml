@@ -34,7 +34,7 @@ variables:
 
   CMA_RBAC_ONLY: true
   CMA_RBAC_ACTION: "license-rule"
-  CMA_RBAC_LICENSE_RULE_NAME: my-pipeline
+  CMA_RBAC_LICENSE_RULE_NAME: iot-pipeline
 steps:
 - script: |
     # Write your commands here
@@ -50,8 +50,8 @@ steps:
     ls -ltr
     cd ConfigMyApp/
 
-    # echo "Remove all apps rule"
-    # rm ./rbac/restui_license_rules_files/payload_all.json 
+    echo "Remove all apps rule"
+    rm ./rbac/restui_license_rules_files/payload_all.json 
 
     pwd
     ls -ltr
