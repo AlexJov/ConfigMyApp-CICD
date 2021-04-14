@@ -15,8 +15,8 @@ pool:
 
 # Set variables once as shown below, use the UI ee
 variables:
-  CMA_APPLICATION_NAME: IoT_API
-  CMA_CONTROLLER_HOST: nbsdemo-2120nosshcontr-chvgikps.appd-cloudmachine.com
+  CMA_APPLICATION_NAME: IoT_API_Demo
+  CMA_CONTROLLER_HOST: configmyappdemo-20103n-m3lp0zmi.appd-cx.com
   CMA_CONTROLLER_PORT: 8090
   CMA_ACCOUNT: customer1
   CMA_USE_HTTPS: false
@@ -28,9 +28,10 @@ variables:
   CMA_INCLUDE_DATABASE : false
   CMA_OVERWRITE_HEALTH_RULES: false
   CMA_DATABASE_NAME: ConfigMyApp
-  CMA_USE_BRANDING: true
+  CMA_USE_BRANDING: false
   CMA_UPLOAD_DEFAULT_DASHBOARD: false
   CMA_HEALTH_RULES_ONLY: false
+  
   CMA_RBAC_ONLY: true
   CMA_RBAC_ACTION: "license-rule"
   CMA_RBAC_LICENSE_RULE_NAME: pipeline-rule
