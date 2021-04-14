@@ -29,23 +29,31 @@ variables:
   CMA_OVERWRITE_HEALTH_RULES: false
   CMA_DATABASE_NAME: ConfigMyApp
   CMA_USE_BRANDING: true
-  CMA_UPLOAD_DEFAULT_DASHBOARD: true
+  CMA_UPLOAD_DEFAULT_DASHBOARD: false
   CMA_HEALTH_RULES_ONLY: false
+  CMA_RBAC_ONLY: true
+  CMA_RBAC_ACTION: "license-rule"
+  CMA_RBAC_LICENSE_RULE_NAME: my-pipeline-action
 steps:
 - script: |
     # Write your commands here
     
-    LOCATION=$(curl -s https://api.github.com/repos/Appdynamics/ConfigMyApp/releases/latest \
-                | grep "tag_name" \
-                | awk '{print "https://github.com/Appdynamics/ConfigMyApp/archive/" substr($2, 2, length($2)-3) ".zip"}') \
-                ; curl -L -o ConfigMyApp.zip $LOCATION
+    # LOCATION=$(curl -s https://api.github.com/repos/Appdynamics/ConfigMyApp/releases/latest \
+    #             | grep "tag_name" \
+    #             | awk '{print "https://github.com/Appdynamics/ConfigMyApp/archive/" substr($2, 2, length($2)-3) ".zip"}') \
+    #             ; curl -L -o ConfigMyApp.zip $LOCATION
         
-    pwd
+    LOCATION=$(git clone -branch features-rbac https://github.com/Appdynamics/ConfigMyApp.git)
 
+    pwd
+    ls -ltr
+    cd ConfigMyApp/
+
+    pwd
     ls -ltr
     # apt-get install unzip -y
-    unzip ConfigMyApp.zip
-    cd ConfigMyApp-* 
+    # unzip ConfigMyApp.zip
+    # cd ConfigMyApp-* 
 
     #Branding
     #Get it from a remote location 
@@ -60,9 +68,6 @@ steps:
     #cp  ../branding/background.png branding/background.png
     #cp  ../branding/logo.png branding/logo.png
 
-    echo CMA_USERNAME = $CMA_USERNAME
-    echo CMA_PASSWORD = $CMA_PASSWORD
-
     echo CMA_BT_ONLY = $CMA_BT_ONLY
     echo CMA_CONFIGURE_BT = $CMA_CONFIGURE_BT
 
@@ -73,6 +78,8 @@ steps:
     else
        ./start.sh  --logo-name="logo.png" --background-name="background.jpg" 
     fi
+    
+    echo CMA_HEALTH_RULES_ONLY = $CMA_HEALTH_RULES_ONLY
     
     if [ "$CMA_HEALTH_RULES_ONLY" = true ]; then
       echo "Copying health rules files..."
