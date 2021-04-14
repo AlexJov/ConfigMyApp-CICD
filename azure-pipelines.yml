@@ -20,15 +20,15 @@ variables:
   CMA_ACCOUNT: customer1
   CMA_USE_HTTPS: false
   CMA_USERNAME: appd
-  CMA_CONFIGURE_BT: true
+  CMA_CONFIGURE_BT: false
   CMA_INCLUDE_SIM: true
-  CMA_BT_ONLY: true
+  CMA_BT_ONLY: false
   CMA_INCLUDE_DATABASE : true
   CMA_OVERWRITE_HEALTH_RULES: false
   CMA_DATABASE_NAME: ConfigMyApp
   CMA_USE_BRANDING: true
   CMA_UPLOAD_DEFAULT_DASHBOARD: true
-  CMA_HEALTH_RULES_ONLY: true
+  CMA_HEALTH_RULES_ONLY: false
 steps:
 - script: |
     # Write your commands here
