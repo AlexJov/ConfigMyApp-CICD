@@ -33,7 +33,7 @@ variables:
   CMA_HEALTH_RULES_ONLY: false
   CMA_RBAC_ONLY: true
   CMA_RBAC_ACTION: "license-rule"
-  CMA_RBAC_LICENSE_RULE_NAME: my-pipeline-rule
+  CMA_RBAC_LICENSE_RULE_NAME: pipeline-rule
 steps:
 - script: |
     # Write your commands here
