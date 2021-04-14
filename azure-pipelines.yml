@@ -6,6 +6,7 @@
 
 trigger:
 - master
+- azure-pipelines-vf
 pool:
   vmImage: 'ubuntu-latest'
   environment:
