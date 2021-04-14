@@ -43,7 +43,7 @@ steps:
     #             | awk '{print "https://github.com/Appdynamics/ConfigMyApp/archive/" substr($2, 2, length($2)-3) ".zip"}') \
     #             ; curl -L -o ConfigMyApp.zip $LOCATION
         
-    LOCATION=$(git clone -branch features/rbac https://github.com/Appdynamics/ConfigMyApp.git)
+    LOCATION=$(git clone --single-branch --branch features/rbac https://github.com/Appdynamics/ConfigMyApp.git)
 
     pwd
     ls -ltr
