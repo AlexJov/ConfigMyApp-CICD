@@ -31,7 +31,7 @@ variables:
   CMA_USE_BRANDING: false
   CMA_UPLOAD_DEFAULT_DASHBOARD: false
   CMA_HEALTH_RULES_ONLY: false
-  
+
   CMA_RBAC_ONLY: true
   CMA_RBAC_ACTION: "license-rule"
   CMA_RBAC_LICENSE_RULE_NAME: pipeline-rule
@@ -49,6 +49,9 @@ steps:
     pwd
     ls -ltr
     cd ConfigMyApp/
+
+    # echo "Remove all"
+    rm ./rbac/restui_license_rules_files/payload_all.json 
 
     pwd
     ls -ltr
