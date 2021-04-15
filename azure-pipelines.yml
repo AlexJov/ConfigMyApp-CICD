@@ -22,17 +22,20 @@ variables:
   CMA_USE_HTTPS: false
   CMA_USERNAME: appd
   CMA_PASSWORD: appd
-  CMA_CONFIGURE_BT: true
-  CMA_INCLUDE_SIM: true
-  CMA_BT_ONLY: false
-  CMA_INCLUDE_DATABASE : true
-  CMA_OVERWRITE_HEALTH_RULES: false
-  CMA_DATABASE_NAME: ConfigMyApp
-  CMA_USE_BRANDING: false
-  CMA_UPLOAD_DEFAULT_DASHBOARD: true
-  CMA_HEALTH_RULES_ONLY: true
 
-  CMA_RBAC_ONLY: false
+  CMA_CONFIGURE_BT: true
+  CMA_BT_ONLY: true
+
+  CMA_INCLUDE_DATABASE : true
+  CMA_INCLUDE_SIM: true
+  CMA_DATABASE_NAME: ConfigMyApp
+  CMA_USE_BRANDING: true
+  CMA_UPLOAD_DEFAULT_DASHBOARD: true
+
+  CMA_HEALTH_RULES_ONLY: true
+  CMA_OVERWRITE_HEALTH_RULES: false
+
+  CMA_RBAC_ONLY: true
   CMA_RBAC_ACTION: "license-rule"
   CMA_RBAC_LICENSE_RULE_NAME: pipeline
 steps:
@@ -48,8 +51,8 @@ steps:
 
     cd ConfigMyApp/
 
-    # echo "Remove all apps rule"
-    # rm ./rbac/restui_license_rules_files/payload_all.json 
+    echo "Remove all apps rule"
+    rm ./rbac/restui_license_rules_files/payload_all.json 
 
     pwd
     ls -ltr
@@ -77,21 +80,28 @@ steps:
       echo "Copying business transaction rules..."
       cp ../bt_config/$CMA_APPLICATION_NAME-configBT.json bt_config/configBT.json
       ./start.sh  --include-database --database-name="$CMA_DATABASE_NAME" --no-upload-default-dashboard --no-health-rules-only
-    else
-       ./start.sh  --logo-name="logo.png" --background-name="background.jpg" 
     fi
     
     echo CMA_HEALTH_RULES_ONLY = $CMA_HEALTH_RULES_ONLY
     
     if [ "$CMA_HEALTH_RULES_ONLY" = true ]; then
       echo "Copying health rules files..."
-      cp ../healthrules/${CMA_APPLICATION_NAME}/* health_rules/
+      cp -r ../healthrules/${CMA_APPLICATION_NAME}/* health_rules/
       ls health_rules/
       ./start.sh --health-rules-only --no-bt-only --no-upload-default-dashboard
     fi
+
+    echo CMA_UPLOAD_DEFAULT_DASHBOARD = $CMA_UPLOAD_DEFAULT_DASHBOARD
     
     if [ "$CMA_UPLOAD_DEFAULT_DASHBOARD" = true ]; then
       ./start.sh --no-health-rules-only --no-bt-only --logo-name="logo-white.png" --background-name="background.jpg" 
+    fi
+
+    echo CMA_RBAC_ONLY = $CMA_RBAC_ONLY
+
+    if [ "$CMA_RBAC_ONLY" = true ]; then
+      echo "Running RBAC module..."
+      ./start.sh --no-upload-default-dashboard --no-health-rules-only --no-bt-only
     fi
     
     
