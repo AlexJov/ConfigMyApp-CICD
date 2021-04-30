@@ -37,7 +37,7 @@ variables:
 
   CMA_RBAC_ONLY: true
   CMA_RBAC_ACTION: "license-rule"
-  CMA_RBAC_LICENSE_RULE_NAME: pipeline
+  CMA_RBAC_LICENSE_RULE_NAME: github-managed
 steps:
 - script: |
     # Write your commands here
@@ -53,6 +53,7 @@ steps:
 
     echo "Remove all apps rule"
     rm ./rbac/restui_license_rules_files/payload_all.json 
+    
 
     pwd
     ls -ltr

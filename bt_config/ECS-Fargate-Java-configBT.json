@@ -2,7 +2,7 @@
     "java_pojo_rules": [
        {
         "include_or_exclude_rule": "exclude",
-        "rule_name": "getStatus_demo",
+        "rule_name": "getStatus_dropinclinic",
         "class_name": "com.appdynamics.health.Class",
         "class_matching_condition":"STARTS_WITH",
         "method_name": "getStatus",
@@ -14,7 +14,7 @@
      "dotnet_poco_rules": [
       {
         "include_or_exclude_rule": "INCLUDE",
-        "rule_name": "GetMQTopic_demo",
+        "rule_name": "GetMQTopic_dropinclinic",
         "class_name": "Services.IO.DequeueSync",
         "class_matching_condition":"STARTS_WITH",
         "method_name": "GetMQTopic",
