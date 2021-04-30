@@ -23,7 +23,7 @@
        },
        {
         "include_or_exclude_rule": "EXCLUDE",
-        "rule_name": "UserLogin_demo",
+        "rule_name": "UserLogin_dropinclinic",
         "class_name": "AppD.Ecom.AuthNTest",
         "class_matching_condition":"STARTS_WITH",
         "method_name": "Login",
@@ -35,7 +35,7 @@
      "dotnet_asp_rules": [
       {
        "include_or_exclude_rule": "Include",
-       "rule_name": "ASPLogin_demo",
+       "rule_name": "ASPLogin_dropinclinic",
        "matching_condition":"CONTAINS",
        "matching_strings": "/login",
        "priority":"8"
@@ -44,7 +44,7 @@
 
     "java_servlet_rules": [
       {
-       "rule_name": "LogonServlet_demo",
+       "rule_name": "LogonServlet_dropinclinic",
        "matching_condition":"MATCHES_REGEX",
        "matching_strings": "^user.*(\/login)$",
        "priority":"7"
