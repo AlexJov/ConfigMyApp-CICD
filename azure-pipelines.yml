@@ -27,7 +27,7 @@ variables:
   CMA_BT_ONLY: true
 
   CMA_INCLUDE_DATABASE : false
-  CMA_INCLUDE_SIM: true
+  CMA_INCLUDE_SIM: false
   CMA_DATABASE_NAME: ConfigMyApp
   CMA_USE_BRANDING: true
   CMA_UPLOAD_DEFAULT_DASHBOARD: true
