@@ -15,7 +15,7 @@ pool:
 
 # Set variables once as shown below, use the UI ee
 variables:
-  CMA_APPLICATION_NAME: IoT_API_Demo
+  CMA_APPLICATION_NAME: ECS-Fargate-Java
   CMA_CONTROLLER_HOST: configmyappdemo-20103n-m3lp0zmi.appd-cx.com
   CMA_CONTROLLER_PORT: 8090
   CMA_ACCOUNT: customer1
@@ -42,12 +42,12 @@ steps:
 - script: |
     # Write your commands here
     
-    # LOCATION=$(curl -s https://api.github.com/repos/Appdynamics/ConfigMyApp/releases/latest \
-    #             | grep "tag_name" \
-    #             | awk '{print "https://github.com/Appdynamics/ConfigMyApp/archive/" substr($2, 2, length($2)-3) ".zip"}') \
-    #             ; curl -L -o ConfigMyApp.zip $LOCATION
+    LOCATION=$(curl -s https://api.github.com/repos/Appdynamics/ConfigMyApp/releases/latest \
+                | grep "tag_name" \
+                | awk '{print "https://github.com/Appdynamics/ConfigMyApp/archive/" substr($2, 2, length($2)-3) ".zip"}') \
+                ; curl -L -o ConfigMyApp.zip $LOCATION
         
-    LOCATION=$(git clone --single-branch --branch features/rbac https://github.com/Appdynamics/ConfigMyApp.git)
+    # LOCATION=$(git clone --single-branch --branch features/rbac https://github.com/Appdynamics/ConfigMyApp.git)
 
     cd ConfigMyApp/
 
