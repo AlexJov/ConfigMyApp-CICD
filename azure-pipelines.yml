@@ -26,7 +26,7 @@ variables:
   CMA_CONFIGURE_BT: true
   CMA_BT_ONLY: true
 
-  CMA_INCLUDE_DATABASE : false
+  CMA_INCLUDE_DATABASE : true
   CMA_INCLUDE_SIM: false
   CMA_DATABASE_NAME: ConfigMyApp
   CMA_USE_BRANDING: true
