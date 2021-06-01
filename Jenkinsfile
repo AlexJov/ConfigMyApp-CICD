@@ -69,7 +69,7 @@ node {
             ls ${workspace}
 
             if [ "\$CMA_BT_ONLY" = true ] || [ "\$CMA_CONFIGURE_BT" = true ]; then
-              cp ${workspace}/bt_config/${params.CMA_APPLICATION_NAME}-configBT.json bt_config/configBT.json
+              cp ${workspace}/bt_config/${params.CMA_APPLICATION_NAME}-configBT.json bt_config/configBT.json 
             fi
             
             if [ "\$CMA_HEALTH_RULES_ONLY" = true ]; then
@@ -77,15 +77,15 @@ node {
               rm -r health_rules/*
               cp -r ${workspace}/health_rules/${params.CMA_APPLICATION_NAME}/* health_rules/
               ls health_rules/
-              ./start.sh --logo-name="logo.png" --background-name="background.jpg"
+              ./start.sh --logo-name="logo.png" --background-name="background.jpg" --no-upload-default-dashboard
               exit 0
             fi
 
             echo "Start script"
             if [ "\$CMA_INCLUDE_DATABASE" = true ]; then 
-              ./start.sh  --include-database --database-name='${params.CMA_DATABASE_NAME}' --overwrite-health-rules  --logo-name="logo.png" --background-name="background.jpg"
+              ./start.sh  --include-database --database-name='${params.CMA_DATABASE_NAME}' --overwrite-health-rules  --logo-name="logo.png" --background-name="background.jpg" --no-upload-default-dashboard
             else
-              ./start.sh --overwrite-health-rules  --logo-name="logo.png" --background-name="background.jpg"
+              ./start.sh --overwrite-health-rules  --logo-name="logo.png" --background-name="background.jpg" --no-upload-default-dashboard
             fi
             echo "End script"
           """
