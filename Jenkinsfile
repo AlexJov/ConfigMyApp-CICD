@@ -10,13 +10,13 @@ properties(
       string(defaultValue: '8090', description: 'Controller Port', name: 'CMA_CONTROLLER_PORT', trim: true),
       booleanParam(defaultValue: 'false', description: 'Use HTTPS?', name: 'CMA_USE_HTTPS', trim: false),
       booleanParam(defaultValue: false, description: 'Include Server visibility', name: 'CMA_INCLUDE_SIM'),
-      booleanParam(defaultValue: false, description: 'Configure ONLY Buisness transactions', name: 'CMA_BT_ONLY'),
+      booleanParam(defaultValue: true, description: 'Configure ONLY Buisness transactions', name: 'CMA_BT_ONLY'),
       booleanParam(defaultValue: false, description: 'Add Business Transactions', name: 'CMA_CONFIGURE_BT'),
       booleanParam(defaultValue: false, description: 'Include Database', name: 'CMA_INCLUDE_DATABASE'),
       string(defaultValue: 'ConfigMyApp', description: 'If Include DB, set DB collector name', name: 'CMA_DATABASE_NAME', trim: false),
       booleanParam(defaultValue: false, description: 'Overwrite Existing Health Rules', name: 'CMA_OVERWRITE_HEALTH_RULES'),
       booleanParam(defaultValue: true, description: 'Configure only Health Rules', name: 'CMA_HEALTH_RULES_ONLY'),
-      booleanParam(defaultValue: false, description: 'Create dashboard?', name: 'CMA_UPLOAD_DEFAULT_DASHBOARD')
+      booleanParam(defaultValue: true, description: 'Create dashboard?', name: 'CMA_UPLOAD_DEFAULT_DASHBOARD')
      
      
     ])
