@@ -4,11 +4,11 @@ properties(
  // [pipelineTriggers([githubPush()])]
   [parameters(
     [
-      string(defaultValue: 'Jenkins_API_Demo', description: '', name: 'CMA_APPLICATION_NAME', trim: false),
+      string(defaultValue: 'Kong_PS', description: '', name: 'CMA_APPLICATION_NAME', trim: false),
       choice(choices: ['configmyappdemo-20103n-m3lp0zmi.appd-cx.com', 'fieldlabs.saas.appdynamics.com'], description: 'Select AppDynamics Controller', name: 'CMA_CONTROLLER_HOST'),
       choice(choices: ['customer1', 'fieldlabs'], description: 'Select AppDynamics Account', name: 'CMA_ACCOUNT'),
       string(defaultValue: '8090', description: 'Controller Port', name: 'CMA_CONTROLLER_PORT', trim: true),
-      booleanParam(defaultValue: 'false', description: 'Use HTTPS?', name: 'CMA_USE_HTTPS', trim: false),
+      booleanParam(defaultValue: 'true', description: 'Use HTTPS?', name: 'CMA_USE_HTTPS', trim: false),
       booleanParam(defaultValue: false, description: 'Include Server visibility', name: 'CMA_INCLUDE_SIM'),
       booleanParam(defaultValue: false, description: 'Configure ONLY Buisness transactions', name: 'CMA_BT_ONLY'),
       booleanParam(defaultValue: false, description: 'Add Business Transactions', name: 'CMA_CONFIGURE_BT'),
@@ -50,12 +50,14 @@ node {
             export CMA_UPLOAD_CUSTOM_DASHBOARD=${params.CMA_UPLOAD_CUSTOM_DASHBOARD}
 
 
-            LOCATION=\$(curl -s https://api.github.com/repos/Appdynamics/ConfigMyApp/releases/latest \
+            LOCATION=\$(curl -s https://api.github.com/repos/CiscoDevNet/ConfigMyApp/releases/latest \
             | grep "tag_name" \
-            | awk '{print "https://github.com/Appdynamics/ConfigMyApp/archive/" substr(\$2, 2, length(\$2)-3) ".zip"}') \
+            | awk '{print "https://github.com/CiscoDevNet/ConfigMyApp/archive/" substr(\$2, 2, length(\$2)-3) ".zip"}') \
             ; curl -L -o ConfigMyApp.zip \$LOCATION
 
             ls -ltr
+
+            echo "USER >>> \$CMA_UERNAME"
 
             # apt-get install unzip -y drgrdtrtr
             unzip ConfigMyApp.zip
