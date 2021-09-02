@@ -18,7 +18,7 @@ properties(
       booleanParam(defaultValue: true, description: 'Configure only Health Rules', name: 'CMA_HEALTH_RULES_ONLY'),
       booleanParam(defaultValue: false, description: 'Create default dashboard?', name: 'CMA_UPLOAD_DEFAULT_DASHBOARD'),
       booleanParam(defaultValue: true, description: 'Upload custom dashboard?', name: 'CMA_UPLOAD_CUSTOM_DASHBOARD')
-      
+
     ])
   ]
 )
@@ -31,7 +31,7 @@ node {
          checkout scm
         }
        stage('ConfigMyApp') {  
-           withCredentials([usernamePassword(credentialsId: 'controller_credentials', passwordVariable: 'CMA_PASSWORD', usernameVariable: 'CMA_USERNAME')]) {
+           withCredentials([usernamePassword(credentialsId: 'kong_controller_credentials', passwordVariable: 'CMA_PASSWORD', usernameVariable: 'CMA_USERNAME')]) {
             sh """
             echo "ConfigMyApp..start"  
             export CMA_APPLICATION_NAME=${params.CMA_APPLICATION_NAME}
