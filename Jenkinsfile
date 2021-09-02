@@ -57,7 +57,7 @@ node {
 
             ls -ltr
 
-            echo "USER >>> \$CMA_UERNAME"
+            echo "USER >>> \$CMA_USERNAME"
 
             # apt-get install unzip -y drgrdtrtr
             unzip ConfigMyApp.zip
