@@ -57,7 +57,6 @@ node {
 
             ls -ltr
 
-            echo "USER >>> \$CMA_USERNAME"
 
             # apt-get install unzip -y drgrdtrtr
             unzip ConfigMyApp.zip
@@ -79,7 +78,7 @@ node {
             
             if [ "\$CMA_UPLOAD_CUSTOM_DASHBOARD" = true ]; then
               echo "Copying dahboard files..."
-              rm -r custom_dashboards/*
+
               cp -r ${workspace}/custom_dashboards/${params.CMA_APPLICATION_NAME}/* custom_dashboards/
               ls custom_dashboards/
               ./start.sh --upload-custom-dashboard --no-upload-default-dashboard
