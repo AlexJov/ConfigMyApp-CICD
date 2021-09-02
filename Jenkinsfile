@@ -4,7 +4,7 @@ properties(
  // [pipelineTriggers([githubPush()])]
   [parameters(
     [
-      string(defaultValue: 'Kong_PS', description: '', name: 'CMA_APPLICATION_NAME', trim: false),
+      string(defaultValue: 'PS_Kong', description: '', name: 'CMA_APPLICATION_NAME', trim: false),
       choice(choices: ['saas.appd-cx.com'], description: 'Select AppDynamics Controller', name: 'CMA_CONTROLLER_HOST'),
       choice(choices: ['customer1', 'fieldlabs'], description: 'Select AppDynamics Account', name: 'CMA_ACCOUNT'),
       string(defaultValue: '8090', description: 'Controller Port', name: 'CMA_CONTROLLER_PORT', trim: true),
@@ -17,7 +17,7 @@ properties(
       booleanParam(defaultValue: false, description: 'Overwrite Existing Health Rules', name: 'CMA_OVERWRITE_HEALTH_RULES'),
       booleanParam(defaultValue: true, description: 'Configure only Health Rules', name: 'CMA_HEALTH_RULES_ONLY'),
       booleanParam(defaultValue: false, description: 'Create default dashboard?', name: 'CMA_UPLOAD_DEFAULT_DASHBOARD'),
-      booleanParam(defaultValue: false, description: 'Upload custom dashboard?', name: 'CMA_UPLOAD_CUSTOM_DASHBOARD')
+      booleanParam(defaultValue: true, description: 'Upload custom dashboard?', name: 'CMA_UPLOAD_CUSTOM_DASHBOARD')
       
 
     ])
