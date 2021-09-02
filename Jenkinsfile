@@ -49,6 +49,7 @@ node {
             export CMA_UPLOAD_DEFAULT_DASHBOARD=${params.CMA_UPLOAD_DEFAULT_DASHBOARD}
             export CMA_UPLOAD_CUSTOM_DASHBOARD=${params.CMA_UPLOAD_CUSTOM_DASHBOARD}
 
+
             LOCATION=\$(curl -s https://api.github.com/repos/Appdynamics/ConfigMyApp/releases/latest \
             | grep "tag_name" \
             | awk '{print "https://github.com/Appdynamics/ConfigMyApp/archive/" substr(\$2, 2, length(\$2)-3) ".zip"}') \
