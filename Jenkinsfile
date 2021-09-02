@@ -5,7 +5,7 @@ properties(
   [parameters(
     [
       string(defaultValue: 'Kong_PS', description: '', name: 'CMA_APPLICATION_NAME', trim: false),
-      choice(choices: ['configmyappdemo-20103n-m3lp0zmi.appd-cx.com', 'fieldlabs.saas.appdynamics.com'], description: 'Select AppDynamics Controller', name: 'CMA_CONTROLLER_HOST'),
+      choice(choices: ['saas.appd-cx.com'], description: 'Select AppDynamics Controller', name: 'CMA_CONTROLLER_HOST'),
       choice(choices: ['customer1', 'fieldlabs'], description: 'Select AppDynamics Account', name: 'CMA_ACCOUNT'),
       string(defaultValue: '8090', description: 'Controller Port', name: 'CMA_CONTROLLER_PORT', trim: true),
       booleanParam(defaultValue: 'true', description: 'Use HTTPS?', name: 'CMA_USE_HTTPS', trim: false),
