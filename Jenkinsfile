@@ -61,7 +61,7 @@ node {
             background="https://user-images.githubusercontent.com/2548160/94803698-99ee7a80-03e1-11eb-9bff-5ed9b89eefec.jpg"
             #background="https://user-images.githubusercontent.com/2548160/90539325-97103100-e177-11ea-975a-6ae777ae03e3.jpg"
             curl -o "branding/background.jpg" \$background 
-            logo="https://user-images.githubusercontent.com/2548160/79470803-bf392900-7ff9-11ea-9298-ec58cf45786a.png"
+            logo="https://user-images.githubusercontent.com/23483887/131845401-7f98a4c2-a177-405e-9f6e-f27f8e22a13e.png"
             curl -o "branding/logo.png" \$logo 
       
             pwd
