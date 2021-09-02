@@ -1,0 +1,70 @@
+{
+  "id": 467,
+  "name": "Standard: Number of Errors too high",
+  "enabled": true,
+  "useDataFromLastNMinutes": 30,
+  "waitTimeAfterViolation": 30,
+  "scheduleName": "Weekdays: 8am-5pm, Mon-Fri",
+  "affects": {
+    "affectedEntityType": "ERRORS",
+    "affectedErrors": {
+      "errorScope": "ALL_ERRORS"
+    }
+  },
+  "evalCriterias": {
+    "criticalCriteria": {
+      "conditionAggregationType": "ALL",
+      "conditionExpression": null,
+      "conditions": [
+        {
+          "name": "Number of Errors",
+          "shortName": "A",
+          "evaluateToTrueOnNoData": false,
+          "evalDetail": {
+            "evalDetailType": "SINGLE_METRIC",
+            "metricAggregateFunction": "VALUE",
+            "metricPath": "Number of Errors",
+            "metricEvalDetail": {
+              "metricEvalDetailType": "SPECIFIC_TYPE",
+              "compareCondition": "GREATER_THAN_SPECIFIC_VALUE",
+              "compareValue": 5
+            }
+          },
+          "triggerEnabled": false,
+          "minimumTriggers": 15
+        }
+      ],
+      "evalMatchingCriteria": {
+        "matchType": "ANY_NODE",
+        "value": null
+      }
+    },
+    "warningCriteria": {
+      "conditionAggregationType": "ALL",
+      "conditionExpression": null,
+      "conditions": [
+        {
+          "name": "Number of Errors",
+          "shortName": "A",
+          "evaluateToTrueOnNoData": false,
+          "evalDetail": {
+            "evalDetailType": "SINGLE_METRIC",
+            "metricAggregateFunction": "VALUE",
+            "metricPath": "Number of Errors",
+            "metricEvalDetail": {
+              "metricEvalDetailType": "SPECIFIC_TYPE",
+              "compareCondition": "GREATER_THAN_SPECIFIC_VALUE",
+              "compareValue": 3
+            }
+          },
+          "triggerEnabled": false,
+          "minimumTriggers": 15
+        }
+      ],
+      "evalMatchingCriteria": {
+        "matchType": "ANY_NODE",
+        "value": null
+      }
+    }
+  }
+}
