@@ -16,14 +16,15 @@ properties(
       string(defaultValue: 'ConfigMyApp', description: 'If Include DB, set DB collector name', name: 'CMA_DATABASE_NAME', trim: false),
       booleanParam(defaultValue: false, description: 'Overwrite Existing Health Rules', name: 'CMA_OVERWRITE_HEALTH_RULES'),
       booleanParam(defaultValue: true, description: 'Configure only Health Rules', name: 'CMA_HEALTH_RULES_ONLY'),
-      booleanParam(defaultValue: false, description: 'Create dashboard?', name: 'CMA_UPLOAD_DEFAULT_DASHBOARD')
-
+      booleanParam(defaultValue: false, description: 'Create default dashboard?', name: 'CMA_UPLOAD_DEFAULT_DASHBOARD')
+      booleanParam(defaultValue: false, description: 'Upload custom dashboard?', name: 'CMA_UPLOAD_CUSTOM_DASHBOARD')
+      
     ])
   ]
 )
 
 node {
- 	// Clean workspace before doing anything...
+     // Clean workspace before doing anything...
     deleteDir()
   try {
       stage ('Clone') { 
@@ -45,6 +46,7 @@ node {
             export CMA_HEALTH_RULES_ONLY=${params.CMA_HEALTH_RULES_ONLY}
             export CMA_OVERWRITE_HEALTH_RULES=${params.CMA_OVERWRITE_HEALTH_RULES}
             export CMA_UPLOAD_DEFAULT_DASHBOARD=${params.CMA_UPLOAD_DEFAULT_DASHBOARD}
+            export CMA_UPLOAD_CUSTOM_DASHBOARD=${params.CMA_UPLOAD_CUSTOM_DASHBOARD}
 
             LOCATION=\$(curl -s https://api.github.com/repos/Appdynamics/ConfigMyApp/releases/latest \
             | grep "tag_name" \
@@ -59,7 +61,6 @@ node {
 
             #Branding...
             background="https://user-images.githubusercontent.com/2548160/94803698-99ee7a80-03e1-11eb-9bff-5ed9b89eefec.jpg"
-            #background="https://user-images.githubusercontent.com/2548160/90539325-97103100-e177-11ea-975a-6ae777ae03e3.jpg"
             curl -o "branding/background.jpg" \$background 
             logo="https://user-images.githubusercontent.com/23483887/131845401-7f98a4c2-a177-405e-9f6e-f27f8e22a13e.png"
             curl -o "branding/logo.png" \$logo 
@@ -72,6 +73,15 @@ node {
               cp ${workspace}/bt_config/${params.CMA_APPLICATION_NAME}-configBT.json bt_config/configBT.json
             fi
             
+            if [ "\$CMA_UPLOAD_CUSTOM_DASHBOARD" = true ]; then
+              echo "Copying dahboard files..."
+              rm -r custom_dashboards/*
+              cp -r ${workspace}/custom_dashboards/${params.CMA_APPLICATION_NAME}/* custom_dashboards/
+              ls custom_dashboards/
+              ./start.sh --upload-custom-dashboard --no-upload-default-dashboard
+              exit 0
+            fi
+
             if [ "\$CMA_HEALTH_RULES_ONLY" = true ]; then
               echo "Copying health rules files..."
               rm -r health_rules/*
